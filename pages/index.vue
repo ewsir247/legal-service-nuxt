@@ -565,7 +565,7 @@ onMounted(() => {
   // embed needs no key/token and always works, with the pin already centred
   // on the office — the "Открыть в 2ГИС" button below covers the 2ГИС link.
   if (mapFrameEl.value && 'IntersectionObserver' in window) {
-    const src = 'https://www.openstreetmap.org/export/embed.html?bbox=38.958826%2C45.020940%2C38.984826%2C45.046940&layer=mapnik&marker=45.033940%2C38.971826'
+    const src = 'https://www.openstreetmap.org/export/embed.html?bbox=38.9664533%2C45.0443012%2C38.9924533%2C45.0703012&layer=mapnik&marker=45.0573012%2C38.9794533'
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {

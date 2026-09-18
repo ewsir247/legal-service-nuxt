@@ -37,7 +37,7 @@ export function organizationJsonLd(siteUrl: string) {
       streetAddress: 'ул. Дзержинского, 8/1',
       addressCountry: 'RU',
     },
-    geo: { '@type': 'GeoCoordinates', latitude: 45.03394, longitude: 38.971826 },
+    geo: { '@type': 'GeoCoordinates', latitude: 45.0573012, longitude: 38.9794533 },
     openingHours: 'Mo-Fr 09:00-18:00',
     priceRange: '₽₽',
     sameAs: ['https://vk.com/legal23ru'],
