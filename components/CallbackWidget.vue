@@ -81,7 +81,7 @@
               </template>
             </div>
 
-            <p class="ls-callback-form__note">Нажимая кнопку, вы соглашаетесь с <NuxtLink to="/privacy" class="ls-alt-link">политикой обработки персональных данных</NuxtLink></p>
+            <p class="ls-callback-form__note">Нажимая кнопку, вы соглашаетесь с <NuxtLink to="/privacy" class="ls-alt-link" @click="closeModal">политикой обработки персональных данных</NuxtLink></p>
           </div>
         </template>
 
