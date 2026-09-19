@@ -57,7 +57,7 @@
           <div class="header-utils ms-lg-3">
             <a href="tel:88612901155" class="header-phone">8 (861) 290-11-55</a>
             <button type="button" class="header-chat-btn btn btn-sm btn-primary" @click="openCallbackModal">
-              <PhoneOutgoing :size="15" :stroke-width="2" />
+              <Phone :size="15" :stroke-width="2" />
               Заказать звонок
             </button>
           </div>
@@ -69,7 +69,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { Phone, PhoneOutgoing, Mail, Clock, MapPin, Menu, X, Users, MessageCircle, MessageSquare } from 'lucide-vue-next'
+import { Phone, Mail, Clock, MapPin, Menu, X, Users, MessageCircle, MessageSquare } from 'lucide-vue-next'
 import { initImageSkeletons } from '../composables/usePageBehaviors'
 import { openCallbackModal } from '../composables/useCallbackModal'
 

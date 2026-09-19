@@ -17,9 +17,7 @@
       class="ls-callback-fab-alt"
       aria-label="Написать юристу в WhatsApp"
     >
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.52 14.19c-.23.65-1.35 1.27-1.86 1.35-.48.07-1.07.1-1.72-.11-.4-.12-.9-.29-1.56-.56-2.73-1.18-4.52-3.94-4.66-4.12-.14-.18-1.13-1.5-1.13-2.86 0-1.36.71-2.03 1-2.3.26-.25.56-.32.74-.32l.53.01c.17 0 .39-.06.62.47l.88 2.14c.07.17.12.37.01.58-.11.21-.17.34-.34.52l-.51.54c-.17.17-.35.36-.15.7.2.34.89 1.47 1.91 2.38 1.31 1.17 2.42 1.53 2.76 1.7.34.17.54.14.74-.08l.5-.58c.2-.23.4-.19.67-.08l2.11.99c.31.15.51.22.58.34.07.12.07.69-.16 1.34z"/>
-      </svg>
+      <MessageCircle :size="18" :stroke-width="2" />
     </a>
 
     <!-- Modal -->
@@ -99,7 +97,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import { Phone, X, CheckCircle } from 'lucide-vue-next'
+import { Phone, X, CheckCircle, MessageCircle } from 'lucide-vue-next'
 import { CALLBACK_OPEN_EVENT } from '../composables/useCallbackModal'
 
 const ENDPOINT = '/api/callback'
