@@ -217,20 +217,27 @@ h1, h2, h3, h4, h5, h6 {
     transition: color .2s var(--transition), background .2s var(--transition);
 }
 .header-phone:hover { color: var(--color-primary) !important; background: rgba(113, 118, 183, .12); }
-.header-chat-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
+/* Специфичность .header-utils .header-chat-btn (0,2,0) нужна, чтобы
+   перебить общий .btn (0,1,0) ниже по файлу — у него !important на
+   display/height/margin/padding, рассчитанный на крупные CTA-кнопки
+   секций, а не на компактную кнопку в шапке. Без этого браузер брал
+   margin:0 auto 34px и height:auto от .btn, и кнопка "провисала" ниже
+   остального ряда шапки независимо от своих собственных height/padding. */
+.header-utils .header-chat-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: center !important;
     gap: 7px;
-    height: 36px;
+    height: 36px !important;
+    margin: 0 !important;
     box-sizing: border-box;
     white-space: nowrap;
-    font-weight: 600;
+    font-weight: 600 !important;
     line-height: 1;
     padding: 0 16px !important;
 }
-.header-chat-btn svg { flex-shrink: 0; }
+.header-utils .header-chat-btn svg { flex-shrink: 0; }
 @media (max-width: 767px) {
     .header-phone { font-size: 1rem; padding: 6px 4px; }
 }
