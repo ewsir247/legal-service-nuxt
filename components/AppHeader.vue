@@ -24,13 +24,13 @@
         <div class="header-topbar__right">
           <div class="header-topbar__socials">
             <a href="https://vk.com/legal23ru" target="_blank" rel="noopener" class="header-topbar__social" title="ВКонтакте">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.45h-1.64c-.62 0-.81-.49-1.92-1.61-1-.95-1.41-1.08-1.65-1.08-.33 0-.43.09-.43.56v1.47c0 .4-.13.64-1.18.64-1.74 0-3.67-1.05-5.03-3.02C4.73 9.95 4.24 8 4.24 7.6c0-.24.09-.47.56-.47h1.64c.42 0 .58.19.74.64.82 2.36 2.19 4.43 2.76 4.43.21 0 .31-.1.31-.64V9.44c-.07-1.15-.67-1.25-.67-1.65 0-.2.16-.4.42-.4h2.58c.36 0 .48.19.48.61v3.26c0 .36.16.49.27.49.21 0 .39-.13.78-.52 1.21-1.35 2.07-3.43 2.07-3.43.11-.24.33-.47.74-.47h1.64c.49 0 .6.26.49.61-.2.94-2.18 3.73-2.18 3.73-.17.28-.24.41 0 .71.17.23.74.71 1.12 1.14.69.78 1.22 1.43 1.36 1.88.15.44-.08.67-.53.67z"/></svg>
+              <Users :size="16" :stroke-width="2" />
             </a>
             <a href="https://wa.me/79282101155" target="_blank" rel="noopener" class="header-topbar__social" title="WhatsApp">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.52 14.19c-.23.65-1.35 1.27-1.86 1.35-.48.07-1.07.1-1.72-.11-.4-.12-.9-.29-1.56-.56-2.73-1.18-4.52-3.94-4.66-4.12-.14-.18-1.13-1.5-1.13-2.86 0-1.36.71-2.03 1-2.3.26-.25.56-.32.74-.32l.53.01c.17 0 .39-.06.62.47l.88 2.14c.07.17.12.37.01.58-.11.21-.17.34-.34.52l-.51.54c-.17.17-.35.36-.15.7.2.34.89 1.47 1.91 2.38 1.31 1.17 2.42 1.53 2.76 1.7.34.17.54.14.74-.08l.5-.58c.2-.23.4-.19.67-.08l2.11.99c.31.15.51.22.58.34.07.12.07.69-.16 1.34z"/></svg>
+              <MessageCircle :size="16" :stroke-width="2" />
             </a>
             <a href="https://max.ru/79282101155" target="_blank" rel="noopener" class="header-topbar__social" title="MAX">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.37C8.53 21.5 10.23 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+              <MessageSquare :size="16" :stroke-width="2" />
             </a>
           </div>
         </div>
@@ -57,7 +57,7 @@
           <div class="header-utils ms-lg-3">
             <a href="tel:88612901155" class="header-phone">8 (861) 290-11-55</a>
             <button type="button" class="header-chat-btn btn btn-sm btn-primary" @click="openCallbackModal">
-              <Phone :size="15" :stroke-width="2" />
+              <PhoneOutgoing :size="15" :stroke-width="2" />
               Заказать звонок
             </button>
           </div>
@@ -69,7 +69,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { Phone, Mail, Clock, MapPin, Menu, X } from 'lucide-vue-next'
+import { Phone, PhoneOutgoing, Mail, Clock, MapPin, Menu, X, Users, MessageCircle, MessageSquare } from 'lucide-vue-next'
 import { initImageSkeletons } from '../composables/usePageBehaviors'
 import { openCallbackModal } from '../composables/useCallbackModal'
 

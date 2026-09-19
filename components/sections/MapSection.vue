@@ -71,6 +71,13 @@ onMounted(() => {
   // OpenStreetMap public embed, which needs no key/token and always works,
   // with the pin already centred on the office (the "Открыть в 2ГИС" button
   // above covers the 2ГИС link either way).
+  //
+  // NB: a Google Maps no-key iframe ("maps.google.com/maps?q=...&output=embed")
+  // was tried here and reverted — Google now serves that embed page with
+  // `X-Frame-Options: SAMEORIGIN`, so browsers refuse to render it inside an
+  // iframe on a different origin (our site). The officially supported
+  // replacement (Maps Embed API) needs a Google Cloud API key, same
+  // constraint as the 2GIS integration above.
   const mapTargetEl = useDgis ? mapContainerEl.value : mapFrameEl.value
   if (mapTargetEl && 'IntersectionObserver' in window) {
     const osmSrc = 'https://www.openstreetmap.org/export/embed.html?bbox=38.9664533%2C45.0443012%2C38.9924533%2C45.0703012&layer=mapnik&marker=45.0573012%2C38.9794533'

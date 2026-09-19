@@ -217,10 +217,14 @@ h1, h2, h3, h4, h5, h6 {
 .header-chat-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 7px;
     white-space: nowrap;
     font-weight: 600;
+    line-height: 1;
+    padding: 10px 18px !important;
 }
+.header-chat-btn svg { flex-shrink: 0; }
 @media (max-width: 767px) {
     .header-phone { font-size: 1rem; padding: 6px 4px; }
 }
@@ -914,6 +918,18 @@ h3 + p, h3 + ul, h3 + ol, h3 + .e {
 
 /* Social links in topbar */
 .header-topbar__socials { display: flex; align-items: center; gap: 8px; }
+.header-topbar__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    color: rgba(255,255,255,.82);
+    background: rgba(255,255,255,.1);
+    text-decoration: none;
+    transition: color .2s, background .2s;
+}
+.header-topbar__social:hover { color: #fff; background: rgba(255,255,255,.2); }
 
 /* adjust header offset for topbar */
 .header { top: 0; }

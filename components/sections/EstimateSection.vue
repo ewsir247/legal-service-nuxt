@@ -63,7 +63,7 @@
     <!-- Subsection: оспаривание кадастровой стоимости (концептуально
          часть оценки — нужен отчёт об оценке рыночной стоимости).
          id сохранён для старых ссылок/закладок на /#cadastral-dispute. -->
-    <div class="cadastral-sub reveal" id="cadastral-dispute" style="margin-top:14px;">
+    <div class="cadastral-sub" id="cadastral-dispute" style="margin-top:14px;">
       <h3 class="section-title">Отдельно: кадастровая стоимость</h3>
       <p class="e">Завышенная кадастровая стоимость — переплата налога. Проверим бесплатно и, если завышена, снизим через комиссию Росреестра или суд с отчётом независимого оценщика.</p>
       <div class="row row-cols-1 row-cols-md-2 g-4 section-gap-sm">
