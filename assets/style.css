@@ -206,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    height: 44px;
+    height: 36px;
     box-sizing: border-box;
     color: var(--color-primary-dark) !important;
     font-weight: 700;
@@ -223,12 +223,12 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-self: center;
     gap: 7px;
-    height: 44px;
+    height: 36px;
     box-sizing: border-box;
     white-space: nowrap;
     font-weight: 600;
     line-height: 1;
-    padding: 0 18px !important;
+    padding: 0 16px !important;
 }
 .header-chat-btn svg { flex-shrink: 0; }
 @media (max-width: 767px) {
