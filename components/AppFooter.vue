@@ -16,7 +16,7 @@
         <li class="list-group-item"><NuxtLink to="/#reviewing" class="v">Рецензирование экспертиз</NuxtLink></li>
         <li class="list-group-item">
           <NuxtLink to="/#about" class="v">О компании</NuxtLink>
-          <span style="opacity:.6;font-size:.85rem;"> ·
+          <span style="opacity:.6;"> ·
             <NuxtLink to="/about" class="v">подробнее</NuxtLink> ·
             <NuxtLink to="/reviews" class="v">отзывы</NuxtLink> ·
             <NuxtLink to="/articles" class="v">статьи</NuxtLink>
@@ -26,13 +26,13 @@
       <ul class="list-group">
         <li class="list-group-item"><h3>Контакты</h3></li>
         <li class="list-group-item" style="display:flex;align-items:flex-start;gap:6px;">
-          <svg width="14" height="14" style="margin-top:3px;flex-shrink:0;opacity:.65" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <MapPin :size="14" :stroke-width="2" style="margin-top:3px;flex-shrink:0;opacity:.65" />
           г. Краснодар, ул. Дзержинского, 8/1
         </li>
-        <li class="list-group-item"><a href="tel:88612901155" class="v">📞 8 (861) 290-11-55</a></li>
-        <li class="list-group-item"><a href="tel:79282101155" class="v">📱 +7 928-210-11-55</a></li>
-        <li class="list-group-item"><a href="mailto:legal-23@yandex.ru" class="v">✉️ legal-23@yandex.ru</a></li>
-        <li class="list-group-item" style="opacity:.75;font-size:.85rem;">🕐 Пн–Пт: 9:00–18:00</li>
+        <li class="list-group-item"><a href="tel:88612901155" class="v footer-icon-link"><Phone :size="14" :stroke-width="2" /> 8 (861) 290-11-55</a></li>
+        <li class="list-group-item"><a href="tel:79282101155" class="v footer-icon-link"><Phone :size="14" :stroke-width="2" /> +7 928-210-11-55</a></li>
+        <li class="list-group-item"><a href="mailto:legal-23@yandex.ru" class="v footer-icon-link"><Mail :size="14" :stroke-width="2" /> legal-23@yandex.ru</a></li>
+        <li class="list-group-item footer-icon-link" style="opacity:.75;"><Clock :size="14" :stroke-width="2" /> Пн–Пт: 9:00–18:00</li>
         <li class="list-group-item" style="margin-top:10px;">
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
             <a href="https://vk.com/legal23ru" target="_blank" rel="noopener" class="footer-social-icon" title="ВКонтакте">
@@ -53,7 +53,7 @@
         <strong>ООО «Легал Сервис»</strong> &nbsp;·&nbsp;
         ИНН: <strong>2308190291</strong> &nbsp;·&nbsp;
         ОГРН: <strong>1122308006688</strong><br>
-        <span style="font-size:.75rem;">© {{ year }} Легал Сервис. Все права защищены.</span>
+        <span>© {{ year }} Легал Сервис. Все права защищены.</span>
         &nbsp;·&nbsp;
         <NuxtLink to="/privacy" style="color:inherit;">Политика конфиденциальности</NuxtLink>
       </div>
@@ -62,5 +62,7 @@
 </template>
 
 <script setup>
+import { MapPin, Phone, Mail, Clock } from 'lucide-vue-next'
+
 const year = new Date().getFullYear()
 </script>

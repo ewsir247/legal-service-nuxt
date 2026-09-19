@@ -37,6 +37,7 @@ export default defineNuxtConfig({
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://ewsir.space',
       siteName: 'Легал Сервис',
+      dgisApiKey: process.env.NUXT_PUBLIC_2GIS_API_KEY || '',
     },
   },
 

@@ -7,9 +7,7 @@
       aria-label="Заказать обратный звонок"
     >
       <span class="ls-callback-fab__pulse"></span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12.63 19.79 19.79 0 01.07 4.12 2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-      </svg>
+      <Phone :size="22" :stroke-width="2" />
       <span class="ls-callback-fab__label">Заказать звонок</span>
     </button>
     <a
@@ -28,7 +26,7 @@
     <div class="ls-callback-modal" :class="{ 'is-open': showModal }">
       <div class="ls-callback-modal__backdrop" @click="closeModal"></div>
       <div class="ls-callback-modal__card">
-        <button class="ls-callback-modal__close" @click="closeModal" aria-label="Закрыть">×</button>
+        <button class="ls-callback-modal__close" @click="closeModal" aria-label="Закрыть"><X :size="20" :stroke-width="2" /></button>
 
         <template v-if="!sent">
           <span class="ls-callback-modal__badge">Бесплатно</span>
@@ -86,7 +84,7 @@
         </template>
 
         <div v-else class="ls-callback-modal__success">
-          <div class="ls-callback-modal__check">✅</div>
+          <div class="ls-callback-modal__check"><CheckCircle :size="48" :stroke-width="2" /></div>
           <h4>Заявка принята!</h4>
           <p>Спасибо! Мы свяжемся с вами в ближайшее рабочее время.</p>
           <button class="ls-callback-form__submit" @click="closeModal">Закрыть</button>
@@ -101,6 +99,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { Phone, X, CheckCircle } from 'lucide-vue-next'
 import { CALLBACK_OPEN_EVENT } from '../composables/useCallbackModal'
 
 const ENDPOINT = '/api/callback'

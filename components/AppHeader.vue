@@ -5,19 +5,19 @@
       <div class="header-topbar__inner">
         <div class="header-topbar__left">
           <a href="tel:88612901155" class="header-topbar__item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12.63 19.79 19.79 0 01.07 4.12 2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <Phone :size="13" :stroke-width="2" />
             8 (861) 290-11-55
           </a>
           <a href="mailto:legal-23@yandex.ru" class="header-topbar__item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <Mail :size="13" :stroke-width="2" />
             legal-23@yandex.ru
           </a>
           <span class="header-topbar__item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <Clock :size="13" :stroke-width="2" />
             Пн–Пт: 9:00–18:00
           </span>
           <span class="header-topbar__item">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <MapPin :size="13" :stroke-width="2" />
             г. Краснодар, ул. Дзержинского, 8/1
           </span>
         </div>
@@ -45,7 +45,8 @@
           Легал Сервис
         </NuxtLink>
         <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Навигация">
-          <span class="navbar-toggler-icon"></span>
+          <Menu v-if="!menuOpen" :size="22" :stroke-width="2" />
+          <X v-else :size="22" :stroke-width="2" />
         </button>
         <div class="collapse navbar-collapse" :class="{ show: menuOpen }" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -56,7 +57,7 @@
           <div class="header-utils ms-lg-3">
             <a href="tel:88612901155" class="header-phone">8 (861) 290-11-55</a>
             <button type="button" class="header-chat-btn btn btn-sm btn-primary" @click="openCallbackModal">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 12.63 19.79 19.79 0 01.07 4.12 2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <Phone :size="15" :stroke-width="2" />
               Заказать звонок
             </button>
           </div>
@@ -68,6 +69,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { Phone, Mail, Clock, MapPin, Menu, X } from 'lucide-vue-next'
 import { initImageSkeletons } from '../composables/usePageBehaviors'
 import { openCallbackModal } from '../composables/useCallbackModal'
 
