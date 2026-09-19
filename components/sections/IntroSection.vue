@@ -2,9 +2,6 @@
   <!-- ===== ABOUT (short) ===== -->
   <div class="container section-gap-sm">
     <h2 class="w">Оценщик, эксперт и юрист — в одной команде</h2>
-    <h6 class="e">
-      Юрист без экспертизы не докажет ущерб, эксперт без юриста не дойдёт до суда. Мы закрываем весь путь в одном офисе.
-    </h6>
   </div>
 
   <div class="container section-gap-sm" style="text-align:center;">

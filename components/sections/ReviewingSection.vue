@@ -6,7 +6,6 @@
     <div class="hero">
       <span class="hero-badge">Легал Сервис</span>
       <h2 class="section-title">Не согласны с чужой <span class="qw">экспертизой?</span> Докажем, где она неправа</h2>
-      <p class="e">Мотивированная рецензия — законный способ оспорить экспертизу не в вашу пользу: строительную, оценочную, автотехническую, документоведческую, почерковедческую, медицинскую.</p>
     </div>
 
     <div class="feature-grid">
@@ -17,8 +16,6 @@
       <div class="feature reveal"><div class="feature__icon">5</div><h3 class="feature__title">Почерковедческая</h3><p class="feature__text">Исследование подписей и текстов.</p></div>
       <div class="feature reveal"><div class="feature__icon">6</div><h3 class="feature__title">Медицинская</h3><p class="feature__text">Выводы судебно-медицинской экспертизы.</p></div>
     </div>
-
-    <p class="section-text section-text--left">Рецензия — основание ходатайствовать о повторной экспертизе.</p>
 
     <CtaBanner
       title="Нужна консультация по рецензированию экспертиз?"

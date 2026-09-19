@@ -6,7 +6,6 @@
     <div class="hero">
       <span class="hero-badge">Легал Сервис</span>
       <h2 class="section-title"><span class="qw">Отчёт об оценке,</span> который банк и суд примут с первого раза</h2>
-      <p class="e">Недвижимость, транспорт, бизнес, оборудование и ущерб — с обоснованием по ФЗ №135, а не «на глаз».</p>
       <ul class="pain-list">
         <li>Самостоятельная оценка — банк и суд её не примут</li>
         <li>Для каждого объекта своя методика оценки</li>
@@ -64,7 +63,7 @@
     <!-- Subsection: оспаривание кадастровой стоимости (концептуально
          часть оценки — нужен отчёт об оценке рыночной стоимости).
          id сохранён для старых ссылок/закладок на /#cadastral-dispute. -->
-    <div class="cadastral-sub reveal" id="cadastral-dispute" style="margin-top:32px;">
+    <div class="cadastral-sub reveal" id="cadastral-dispute" style="margin-top:14px;">
       <h3 class="section-title">Отдельно: кадастровая стоимость</h3>
       <p class="e">Завышенная кадастровая стоимость — переплата налога. Проверим бесплатно и, если завышена, снизим через комиссию Росреестра или суд с отчётом независимого оценщика.</p>
       <div class="row row-cols-1 row-cols-md-2 g-4 section-gap-sm">
