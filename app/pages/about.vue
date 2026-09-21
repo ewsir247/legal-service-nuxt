@@ -1,6 +1,7 @@
 <template>
   <main class="container-main">
     <div class="container" ref="rootEl">
+      <Breadcrumbs :items="[{ name: 'Главная', path: '/' }, { name: 'О компании', path: '/about' }]" />
       <section class="hero">
         <span class="hero-badge">Легал Сервис</span>
         <h1 class="q"><span class="qw">О компании</span> Легал Сервис</h1>
@@ -46,6 +47,10 @@ useLegalSeo({
   title: 'О компании Легал Сервис — Легал Сервис, Краснодар',
   description: deriveDescription('Легал Сервис — одна из лидирующих оценочно-экспертных компаний в Краснодарском крае. Оказываем услуги оценки, экспертизы и юриспруденции с 2010 года.'),
   path: '/about',
+  breadcrumbs: [
+    { name: 'Главная', path: '/' },
+    { name: 'О компании', path: '/about' },
+  ],
 })
 
 let cleanupFns = []

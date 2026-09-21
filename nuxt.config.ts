@@ -53,4 +53,25 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare-pages',
   },
+
+  // Cloudflare Pages' static `public/_headers` file only applies to requests
+  // served directly as static assets (e.g. /_nuxt/*.js, excluded from the
+  // worker via _routes.json). Every other route — SSR HTML pages, /api/*,
+  // the 404/500 error pages — is handled entirely by the Nitro worker and
+  // never touches Cloudflare's static header matching, so it would otherwise
+  // ship with none of the security headers below. Keep these in sync with
+  // public/_headers (same values) so both code paths agree.
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Frame-Options': 'DENY',
+        'X-Content-Type-Options': 'nosniff',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+        'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+        'Content-Security-Policy':
+          "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://mapgl.2gis.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://mapgl.2gis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.openstreetmap.org https://*.2gis.com https://*.maps.2gis.com; connect-src 'self' https://*.2gis.com https://*.maps.2gis.com https://challenges.cloudflare.com; frame-src https://www.openstreetmap.org https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+      },
+    },
+  },
 })

@@ -1,6 +1,7 @@
 <template>
   <main class="container-main">
     <div class="container" ref="rootEl">
+      <Breadcrumbs :items="[{ name: 'Главная', path: '/' }, { name: 'Отзывы и документы', path: '/reviews' }]" />
       <section class="hero">
         <span class="hero-badge">Легал Сервис</span>
         <h1 class="q"><span class="qw">Отзывы</span> и документы</h1>
@@ -100,6 +101,10 @@ useLegalSeo({
   title: 'Отзывы клиентов — Легал Сервис, Краснодар',
   description: deriveDescription('Благодарственные письма от организаций, отзывы клиентов, дипломы и сертификаты специалистов Легал Сервис.'),
   path: '/reviews',
+  breadcrumbs: [
+    { name: 'Главная', path: '/' },
+    { name: 'Отзывы и документы', path: '/reviews' },
+  ],
 })
 
 const letters = [

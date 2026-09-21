@@ -15,10 +15,16 @@ export function deriveDescription(html: string): string {
   return cut.slice(0, cut.lastIndexOf(' ')) + '…'
 }
 
+interface BreadcrumbItem {
+  name: string
+  path: string
+}
+
 interface LegalSeoOptions {
   title: string
   description: string
   path: string
+  breadcrumbs?: BreadcrumbItem[]
 }
 
 export function organizationJsonLd(siteUrl: string) {
@@ -55,7 +61,20 @@ export function webPageJsonLd(siteName: string, title: string, url: string, site
   }
 }
 
-export function useLegalSeo({ title, description, path }: LegalSeoOptions) {
+export function breadcrumbListJsonLd(items: BreadcrumbItem[], siteUrl: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: siteUrl + (item.path === '/' ? '/' : item.path),
+    })),
+  }
+}
+
+export function useLegalSeo({ title, description, path, breadcrumbs }: LegalSeoOptions) {
   const config = useRuntimeConfig()
   const siteUrl = config.public.siteUrl.replace(/\/+$/, '')
   const siteName = config.public.siteName
@@ -78,17 +97,26 @@ export function useLegalSeo({ title, description, path }: LegalSeoOptions) {
     twitterDescription: description,
   })
 
+  const script = [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(organizationJsonLd(siteUrl)),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(webPageJsonLd(siteName, title, url, siteUrl)),
+    },
+  ]
+
+  if (breadcrumbs && breadcrumbs.length) {
+    script.push({
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(breadcrumbListJsonLd(breadcrumbs, siteUrl)),
+    })
+  }
+
   useHead({
     link: [{ rel: 'canonical', href: url }],
-    script: [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(organizationJsonLd(siteUrl)),
-      },
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(webPageJsonLd(siteName, title, url, siteUrl)),
-      },
-    ],
+    script,
   })
 }

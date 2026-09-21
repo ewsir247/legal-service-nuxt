@@ -29,8 +29,8 @@
           <MapPin :size="14" :stroke-width="2" style="margin-top:3px;flex-shrink:0;opacity:.65" />
           г. Краснодар, ул. Дзержинского, 8/1
         </li>
-        <li class="list-group-item"><a href="tel:88612901155" class="v footer-icon-link"><Phone :size="14" :stroke-width="2" /> 8 (861) 290-11-55</a></li>
-        <li class="list-group-item"><a href="tel:79282101155" class="v footer-icon-link"><Phone :size="14" :stroke-width="2" /> +7 928-210-11-55</a></li>
+        <li class="list-group-item"><a href="tel:+78612901155" class="v footer-icon-link"><Phone :size="14" :stroke-width="2" /> +7 (861) 290-11-55</a></li>
+        <li class="list-group-item"><a href="tel:+79282101155" class="v footer-icon-link"><Phone :size="14" :stroke-width="2" /> +7 (928) 210-11-55</a></li>
         <li class="list-group-item"><a href="mailto:legal-23@yandex.ru" class="v footer-icon-link"><Mail :size="14" :stroke-width="2" /> legal-23@yandex.ru</a></li>
         <li class="list-group-item footer-icon-link" style="opacity:.75;"><Clock :size="14" :stroke-width="2" /> Пн–Пт: 9:00–18:00</li>
         <li class="list-group-item" style="margin-top:10px;">

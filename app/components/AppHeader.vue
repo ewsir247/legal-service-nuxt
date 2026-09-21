@@ -4,9 +4,9 @@
     <div class="header-topbar">
       <div class="header-topbar__inner">
         <div class="header-topbar__left">
-          <a href="tel:88612901155" class="header-topbar__item">
+          <a href="tel:+78612901155" class="header-topbar__item">
             <Phone :size="13" :stroke-width="2" />
-            8 (861) 290-11-55
+            +7 (861) 290-11-55
           </a>
           <a href="mailto:legal-23@yandex.ru" class="header-topbar__item">
             <Mail :size="13" :stroke-width="2" />
@@ -44,7 +44,14 @@
           <img :src="logoUrl" class="brand-logo img-skel" alt="Легал Сервис логотип" ref="logoEl" />
           Легал Сервис
         </NuxtLink>
-        <button class="navbar-toggler" type="button" @click="toggleMenu" aria-label="Навигация">
+        <button
+          class="navbar-toggler"
+          type="button"
+          @click="toggleMenu"
+          :aria-label="menuOpen ? 'Закрыть меню' : 'Открыть меню'"
+          :aria-expanded="menuOpen"
+          aria-controls="navbarSupportedContent"
+        >
           <Menu v-if="!menuOpen" :size="22" :stroke-width="2" />
           <X v-else :size="22" :stroke-width="2" />
         </button>
@@ -55,7 +62,7 @@
             </li>
           </ul>
           <div class="header-utils ms-lg-3">
-            <a href="tel:88612901155" class="header-phone">8 (861) 290-11-55</a>
+            <a href="tel:+78612901155" class="header-phone">+7 (861) 290-11-55</a>
             <button type="button" class="header-chat-btn btn btn-sm btn-primary" @click="openCallbackModal">
               <Phone :size="15" :stroke-width="2" />
               Заказать звонок

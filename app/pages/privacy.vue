@@ -1,6 +1,7 @@
 <template>
   <main class="container-main">
     <div class="container" ref="rootEl">
+      <Breadcrumbs :items="[{ name: 'Главная', path: '/' }, { name: 'Политика обработки персональных данных', path: '/privacy' }]" />
       <section class="hero">
         <span class="hero-badge">Легал Сервис</span>
         <h1 class="q"><span class="qw">Политика</span> обработки персональных данных</h1>
@@ -48,7 +49,7 @@
 
       <section class="section reveal">
         <h2 class="section-title">8. Контакты</h2>
-        <p class="section-text section-text--left">По вопросам обработки персональных данных обращайтесь по адресу: <a href="mailto:legal-23@yandex.ru">legal-23@yandex.ru</a> или по телефону <a href="tel:88612901155">8 (861) 290-11-55</a>.</p>
+        <p class="section-text section-text--left">По вопросам обработки персональных данных обращайтесь по адресу: <a href="mailto:legal-23@yandex.ru">legal-23@yandex.ru</a> или по телефону <a href="tel:+78612901155">+7 (861) 290-11-55</a>.</p>
       </section>
 
     </div>
@@ -66,6 +67,10 @@ useLegalSeo({
   title: 'Политика обработки персональных данных — Легал Сервис, Краснодар',
   description: deriveDescription('Политика обработки персональных данных ООО «Легал Сервис»: какие данные собираются через форму обратного звонка, с какой целью и как их защищаем.'),
   path: '/privacy',
+  breadcrumbs: [
+    { name: 'Главная', path: '/' },
+    { name: 'Политика обработки персональных данных', path: '/privacy' },
+  ],
 })
 
 let cleanupFns = []
