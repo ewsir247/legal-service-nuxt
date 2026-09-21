@@ -98,11 +98,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 .header.is-scrolled { box-shadow: var(--shadow-sm); background: var(--header-bg-scrolled); }
 
-.navbar { padding: .25rem .75rem; }
+.navbar { padding: .25rem 0; }
 .navbar .container-fluid {
+    /* тот же max-width+padding, что у .header-topbar__inner и у контента
+       страницы (.container-main > .container) — иначе вторая строка шапки
+       (лого/меню) визуально съезжает влево относительно верхней строки
+       (телефон/почта) и текста ниже. */
+    max-width: 1180px;
+    margin: 0 auto;
     background: transparent !important;
     border-radius: 0 !important;
-    padding: .25rem .5rem !important;
+    padding: .25rem 24px !important;
     display: flex !important;
     align-items: center;
     flex-wrap: wrap;
@@ -1487,7 +1493,8 @@ h3 + p, h3 + ul, h3 + ol, h3 + .e {
     font-weight: 600;
     color: var(--color-text);
 }
-.ls-callback-form__field input {
+.ls-callback-form__field input,
+.ls-callback-form__field textarea {
     border: 1.5px solid var(--color-border-strong);
     border-radius: var(--radius-sm);
     padding: 13px 16px;
@@ -1498,7 +1505,12 @@ h3 + p, h3 + ul, h3 + ol, h3 + .e {
     transition: border-color .2s, box-shadow .2s, background .2s;
     outline: none;
 }
-.ls-callback-form__field input:focus {
+.ls-callback-form__field textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+.ls-callback-form__field input:focus,
+.ls-callback-form__field textarea:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(113,118,183,.2);
     background: #fff;
