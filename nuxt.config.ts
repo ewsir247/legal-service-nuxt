@@ -69,8 +69,16 @@ export default defineNuxtConfig({
         'Referrer-Policy': 'strict-origin-when-cross-origin',
         'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
         'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+        // 'unsafe-inline' on script-src is required because Nuxt SSR emits an
+        // inline hydration/state <script> on every page (content varies per
+        // request/build, so a fixed hash/nonce isn't practical here without
+        // adding nonce plumbing). Without it the hydration script is blocked
+        // by the browser, client JS never boots, and every .reveal element
+        // (opacity:0 until IntersectionObserver adds .is-visible) stays
+        // permanently invisible — this exact regression happened 2026-09-21
+        // when SSR pages first started actually receiving this CSP.
         'Content-Security-Policy':
-          "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://mapgl.2gis.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://mapgl.2gis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.openstreetmap.org https://*.2gis.com https://*.maps.2gis.com; connect-src 'self' https://*.2gis.com https://*.maps.2gis.com https://challenges.cloudflare.com; frame-src https://www.openstreetmap.org https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+          "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://mapgl.2gis.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://mapgl.2gis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.openstreetmap.org https://*.2gis.com https://*.maps.2gis.com; connect-src 'self' https://*.2gis.com https://*.maps.2gis.com https://challenges.cloudflare.com; frame-src https://www.openstreetmap.org https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
       },
     },
   },
