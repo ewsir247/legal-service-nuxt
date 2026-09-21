@@ -23,34 +23,47 @@
     <!-- Modal -->
     <div class="ls-callback-modal" :class="{ 'is-open': showModal }">
       <div class="ls-callback-modal__backdrop" @click="closeModal"></div>
-      <div class="ls-callback-modal__card">
-        <button class="ls-callback-modal__close" @click="closeModal" aria-label="Закрыть"><X :size="20" :stroke-width="2" /></button>
+      <div
+        ref="modalCardEl"
+        class="ls-callback-modal__card"
+        role="dialog"
+        aria-modal="true"
+        :aria-labelledby="titleId"
+        @keydown="onModalKeydown"
+      >
+        <button type="button" class="ls-callback-modal__close" @click="closeModal" aria-label="Закрыть"><X :size="20" :stroke-width="2" /></button>
 
         <template v-if="!sent">
           <span class="ls-callback-modal__badge">Бесплатно</span>
-          <h3 class="ls-callback-modal__title">Заказать обратный звонок</h3>
+          <h3 :id="titleId" class="ls-callback-modal__title">Заказать обратный звонок</h3>
           <p class="ls-callback-modal__lead">Оставьте заявку — перезвоним в рабочее время. Быстрее — <a class="ls-alt-link ls-alt-link--wa" :href="waLink" target="_blank" rel="noopener">напишите в WhatsApp</a>.</p>
 
-          <div class="ls-callback-form">
+          <form class="ls-callback-form" @submit.prevent="submit">
             <div class="ls-callback-form__field">
-              <label>Ваше имя</label>
-              <input type="text" v-model="name" placeholder="Как к вам обращаться?" />
+              <label :for="nameId">Ваше имя</label>
+              <input :id="nameId" ref="nameInputEl" type="text" v-model="name" autocomplete="name" placeholder="Как к вам обращаться?" />
             </div>
             <div class="ls-callback-form__field">
-              <label>Телефон *</label>
+              <label :for="phoneId">Телефон *</label>
               <input
+                :id="phoneId"
                 type="tel"
+                inputmode="tel"
+                required
                 v-model="phone"
                 :class="{ 'is-invalid': phoneError }"
+                :aria-invalid="!!phoneError"
+                :aria-describedby="phoneError ? phoneErrorId : undefined"
+                autocomplete="tel"
                 @input="maskPhone"
                 @focus="onPhoneFocus"
                 placeholder="+7 (___) ___-__-__"
               />
-              <div class="ls-callback-form__error">{{ phoneError }}</div>
+              <div :id="phoneErrorId" class="ls-callback-form__error" role="alert">{{ phoneError }}</div>
             </div>
             <div class="ls-callback-form__field">
-              <label>Комментарий (необязательно)</label>
-              <input type="text" v-model="comment" placeholder="Кратко о вашем вопросе" />
+              <label :for="commentId">Комментарий (необязательно)</label>
+              <input :id="commentId" type="text" v-model="comment" placeholder="Кратко о вашем вопросе" />
             </div>
 
             <!-- Honeypot: hidden from real users, catches bots -->
@@ -63,11 +76,14 @@
               aria-hidden="true"
             />
 
-            <button class="ls-callback-form__submit" @click="submit" :disabled="submitting">
+            <!-- Cloudflare Turnstile: only rendered once a site key is configured -->
+            <div v-if="turnstileSiteKey" ref="turnstileEl" class="cf-turnstile" :data-sitekey="turnstileSiteKey"></div>
+
+            <button type="submit" class="ls-callback-form__submit" :disabled="submitting">
               {{ submitting ? 'Отправка…' : 'Перезвоните мне' }}
             </button>
 
-            <div v-if="serverError" class="ls-callback-form__error" style="text-align:center;min-height:auto;margin-top:-4px;">
+            <div v-if="serverError" class="ls-callback-form__error ls-callback-form__error--server" role="alert">
               {{ serverError }}
               <template v-if="showFallback">
                 — напишите нам в
@@ -78,14 +94,14 @@
             </div>
 
             <p class="ls-callback-form__note">Нажимая кнопку, вы соглашаетесь с <NuxtLink to="/privacy" class="ls-alt-link" @click="closeModal">политикой обработки персональных данных</NuxtLink></p>
-          </div>
+          </form>
         </template>
 
         <div v-else class="ls-callback-modal__success">
           <div class="ls-callback-modal__check"><CheckCircle :size="48" :stroke-width="2" /></div>
           <h4>Заявка принята!</h4>
           <p>Спасибо! Мы свяжемся с вами в ближайшее рабочее время.</p>
-          <button class="ls-callback-form__submit" @click="closeModal">Закрыть</button>
+          <button type="button" class="ls-callback-form__submit" @click="closeModal">Закрыть</button>
         </div>
       </div>
     </div>
@@ -96,11 +112,38 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, useId, onMounted, onUnmounted, nextTick } from 'vue'
 import { Phone, X, CheckCircle, MessageCircle } from 'lucide-vue-next'
 import { CALLBACK_OPEN_EVENT } from '../composables/useCallbackModal'
+import { isValidPhone } from '../../shared/utils/callback'
+import { useScrollLock } from '../composables/useScrollLock'
 
 const ENDPOINT = '/api/callback'
+
+// Unique per component instance (useId(), Vue 3.5+) so labels/ids never
+// collide if this widget is ever mounted more than once on a page.
+const nameId = `callback-name-${useId()}`
+const phoneId = `callback-phone-${useId()}`
+const phoneErrorId = `callback-phone-error-${useId()}`
+const commentId = `callback-comment-${useId()}`
+const titleId = `callback-modal-title-${useId()}`
+
+const scrollLock = useScrollLock()
+const modalCardEl = ref(null)
+const nameInputEl = ref(null)
+let lastFocusedEl = null
+
+const turnstileSiteKey = useRuntimeConfig().public.turnstileSiteKey
+const turnstileEl = ref(null)
+
+// Load the Turnstile script only when a site key is configured — without a
+// key the widget is never rendered and the form works exactly as before
+// (honeypot-only bot protection), no broken/blocked form state.
+if (turnstileSiteKey) {
+  useHead({
+    script: [{ src: 'https://challenges.cloudflare.com/turnstile/v0/api.js', async: true, defer: true }],
+  })
+}
 
 const showModal = ref(false)
 const name = ref('')
@@ -115,6 +158,9 @@ const sent = ref(false)
 const toast = ref(false)
 const toastText = ref('')
 const toastIsError = ref(false)
+// Generated once per form-open, not per submit, so a retried submit after a
+// network error is recognized server-side as the same request.
+let idempotencyKey = ''
 
 const waLink = computed(() => {
   const msg = encodeURIComponent(
@@ -124,16 +170,45 @@ const waLink = computed(() => {
 })
 
 function openModal() {
+  lastFocusedEl = (typeof document !== 'undefined') ? document.activeElement : null
   sent.value = false
   phoneError.value = ''
   serverError.value = ''
   showFallback.value = false
   showModal.value = true
-  if (typeof document !== 'undefined') document.body.style.overflow = 'hidden'
+  idempotencyKey = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`
+  scrollLock.lock()
+  nextTick(() => {
+    // Focus the first field once it's rendered; fall back to the close
+    // button if for some reason the input isn't there yet.
+    const target = nameInputEl.value || modalCardEl.value?.querySelector('.ls-callback-modal__close')
+    target?.focus()
+  })
 }
 function closeModal() {
   showModal.value = false
-  if (typeof document !== 'undefined') document.body.style.overflow = ''
+  scrollLock.unlock()
+  if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') lastFocusedEl.focus()
+  lastFocusedEl = null
+}
+
+// Simple focus trap: keep Tab/Shift+Tab cycling within the modal card
+// while it's open, without pulling in a library.
+function onModalKeydown(e) {
+  if (e.key !== 'Tab') return
+  const focusable = modalCardEl.value?.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )
+  if (!focusable || focusable.length === 0) return
+  const first = focusable[0]
+  const last = focusable[focusable.length - 1]
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault()
+    last.focus()
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault()
+    first.focus()
+  }
 }
 
 function onPhoneFocus() {
@@ -165,13 +240,19 @@ async function submit() {
   serverError.value = ''
   showFallback.value = false
 
-  const digits = phone.value.replace(/\D/g, '')
-  if (digits.length < 11) {
+  if (!isValidPhone(phone.value)) {
     phoneError.value = 'Введите корректный номер телефона'
     return
   }
 
   submitting.value = true
+
+  // Turnstile token, if the widget is present (window.turnstile is loaded by
+  // the api.js script tag added above).
+  let turnstileToken = ''
+  if (turnstileSiteKey && typeof window !== 'undefined' && window.turnstile && turnstileEl.value) {
+    try { turnstileToken = window.turnstile.getResponse(turnstileEl.value) || '' } catch { /* ignore */ }
+  }
 
   const payload = {
     name: name.value,
@@ -179,14 +260,9 @@ async function submit() {
     comment: comment.value,
     website: website.value,             // honeypot
     page: typeof window !== 'undefined' ? window.location.href : '',
+    turnstileToken,
+    idempotencyKey,
   }
-
-  // Local backup regardless of network result
-  try {
-    const arr = JSON.parse(localStorage.getItem('ls_callback_requests_v1') || '[]')
-    arr.push({ ...payload, date: new Date().toISOString() })
-    localStorage.setItem('ls_callback_requests_v1', JSON.stringify(arr))
-  } catch (e) { /* ignore */ }
 
   try {
     const resp = await fetch(ENDPOINT, {
@@ -226,7 +302,6 @@ onUnmounted(() => {
   window.removeEventListener(CALLBACK_OPEN_EVENT, openModal)
 })
 
-watch(showModal, (v) => { if (!v && typeof document !== 'undefined') document.body.style.overflow = '' })
 </script>
 
 <style scoped>

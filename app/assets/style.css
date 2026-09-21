@@ -133,16 +133,13 @@ h1, h2, h3, h4, h5, h6 {
     gap: 10px;
     font-family: var(--font-main);
     font-weight: 700 !important;
-    font-size: 1.25rem !important;
+    font-size: 1.15rem !important;
     color: var(--color-primary-dark) !important;
     letter-spacing: .02em;
     transition: color .25s var(--transition), transform .25s var(--transition);
     flex: 0 0 auto;
 }
 .navbar-brand:hover { color: var(--color-primary) !important; transform: translateY(-1px); }
-.navbar-brand {
-    font-size: 1.15rem !important;
-}
 .navbar-brand img.brand-logo {
     width: 52px;
     height: 52px;
@@ -308,6 +305,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card-img-top {
     height: 200px;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
     background: linear-gradient(135deg, var(--color-bg-soft), var(--color-accent-soft));
     transition: transform .6s var(--transition);
@@ -1022,8 +1020,6 @@ h3 + p, h3 + ul, h3 + ol, h3 + .e {
 .cards-services .card-img-top { height: 220px; }
 /* 3-col grid cards (преимущества) */
 .cards-advantages .card-img-top { height: 180px; }
-/* универсальный fallback */
-.card-img-top { height: 200px; object-fit: cover; }
 
 /* Равномерные отступы между секциями */
 .section-gap { margin-bottom: 24px; }
@@ -1516,6 +1512,11 @@ h3 + p, h3 + ul, h3 + ol, h3 + .e {
     min-height: 18px;
     line-height: 1.3;
 }
+.ls-callback-form__error--server {
+    text-align: center;
+    min-height: auto;
+    margin-top: -4px;
+}
 .ls-callback-form__submit {
     margin-top: 4px;
     padding: 14px 20px;
@@ -1614,10 +1615,7 @@ html { scroll-behavior: smooth; }
 
 /* Layout stability (CLS): images never overflow, cards keep aspect ratio */
 .container-main img { max-width: 100%; height: auto; }
-.card-img-top {
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-}
+/* .card-img-top aspect-ratio/object-fit are declared once, near the base rule above */
 
 /* Buttons: tactile feedback */
 .btn:active, .ls-callback-form__submit:active { transform: translateY(1px); }

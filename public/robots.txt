@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://legal-service-nuxt.pages.dev/sitemap.xml

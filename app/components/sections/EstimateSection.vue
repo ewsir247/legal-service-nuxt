@@ -16,31 +16,31 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 section-gap-sm">
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-nedvizhimosti.png" class="card-img-top" alt="Оценка недвижимости" loading="lazy" decoding="async">
+          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-nedvizhimosti.webp" class="card-img-top" alt="Оценка недвижимости" loading="lazy" decoding="async">
           <div class="card-body"><h5 class="card-title">Недвижимость</h5><p class="card-text">Для ипотеки, наследства, суда или продажи <span class="zx">от 3500 ₽</span></p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-transporta.png" class="card-img-top" alt="Оценка транспорта" loading="lazy" decoding="async">
+          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-transporta.webp" class="card-img-top" alt="Оценка транспорта" loading="lazy" decoding="async">
           <div class="card-body"><h5 class="card-title">Транспорт</h5><p class="card-text">Авто, спецтехника, мототранспорт <span class="zx">от 3500 ₽</span></p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/remont-pri-dtp.png" class="card-img-top" alt="Ремонт при ДТП" loading="lazy" decoding="async">
+          <img src="/assets/photos/remont-pri-dtp.webp" class="card-img-top" alt="Ремонт при ДТП" loading="lazy" decoding="async">
           <div class="card-body"><h5 class="card-title">Ремонт при ДТП</h5><p class="card-text">Реальная стоимость восстановления — для спора со страховой</p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/otsenka-biznesa.png" class="card-img-top" alt="Оценка бизнеса" loading="lazy" decoding="async">
+          <img src="/assets/photos/otsenka-biznesa.webp" class="card-img-top" alt="Оценка бизнеса" loading="lazy" decoding="async">
           <div class="card-body"><h5 class="card-title">Бизнес</h5><p class="card-text">Стоимость предприятия, доли или пакета акций <span class="zxc">индивидуально</span></p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/otsenka-oborudovaniya.png" class="card-img-top" alt="Оценка оборудования" loading="lazy" decoding="async">
+          <img src="/assets/photos/otsenka-oborudovaniya.webp" class="card-img-top" alt="Оценка оборудования" loading="lazy" decoding="async">
           <div class="card-body"><h5 class="card-title">Оборудование</h5><p class="card-text">Для залога в банке, продажи или баланса <span class="zx">от 3500 ₽</span></p></div>
         </div>
       </div>

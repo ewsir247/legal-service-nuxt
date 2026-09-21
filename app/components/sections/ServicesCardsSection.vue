@@ -15,7 +15,7 @@
     <div class="col">
       <NuxtLink to="#estimate" class="g">
         <div class="card">
-          <img src="/assets/photos/otsenka-imushchestva.png" class="card-img-top" alt="Оценка имущества" loading="lazy" decoding="async">
+          <img src="/assets/photos/otsenka-imushchestva.webp" class="card-img-top" alt="Оценка имущества" loading="lazy" decoding="async">
           <div class="card-body">
             <h5 class="card-title">Оценка имущества <span class="card-price-badge">от 3500 ₽</span></h5>
             <p class="card-text">Точная рыночная стоимость для банка, суда или нотариуса — недвижимость, авто, бизнес, оборудование</p>
@@ -26,7 +26,7 @@
     <div class="col">
       <NuxtLink to="#legal-services" class="g">
         <div class="card">
-          <img src="/assets/photos/yuridicheskie-uslugi.png" class="card-img-top" alt="Юридические услуги" loading="lazy" decoding="async">
+          <img src="/assets/photos/yuridicheskie-uslugi.webp" class="card-img-top" alt="Юридические услуги" loading="lazy" decoding="async">
           <div class="card-body">
             <h5 class="card-title">Услуги юриста <span class="card-price-badge">от 5000 ₽</span></h5>
             <p class="card-text">От развода до банкротства и защиты бизнеса в арбитраже — доводим дело до результата</p>
@@ -37,7 +37,7 @@
     <div class="col">
       <NuxtLink to="#reviewing" class="g">
         <div class="card">
-          <img src="/assets/photos/retsenzirovanie-ekspertiz.png" class="card-img-top" alt="Рецензирование" loading="lazy" decoding="async">
+          <img src="/assets/photos/retsenzirovanie-ekspertiz.webp" class="card-img-top" alt="Рецензирование" loading="lazy" decoding="async">
           <div class="card-body">
             <h5 class="card-title">Рецензирование</h5>
             <p class="card-text">Не согласны с чужой экспертизой? Найдём в ней ошибки и дадим основание для повторной проверки</p>

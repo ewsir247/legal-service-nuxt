@@ -44,14 +44,14 @@ export function organizationJsonLd(siteUrl: string) {
   }
 }
 
-export function webPageJsonLd(siteName: string, title: string, url: string) {
+export function webPageJsonLd(siteName: string, title: string, url: string, siteUrl: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: title || siteName,
     url,
     inLanguage: 'ru-RU',
-    isPartOf: { '@type': 'WebSite', name: siteName, url },
+    isPartOf: { '@type': 'WebSite', name: siteName, url: siteUrl },
   }
 }
 
@@ -87,7 +87,7 @@ export function useLegalSeo({ title, description, path }: LegalSeoOptions) {
       },
       {
         type: 'application/ld+json',
-        innerHTML: JSON.stringify(webPageJsonLd(siteName, title, url)),
+        innerHTML: JSON.stringify(webPageJsonLd(siteName, title, url, siteUrl)),
       },
     ],
   })

@@ -14,17 +14,23 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#203363' },
       ],
       link: [
+        // TODO: these are the full-size logo, not real resized favicons.
+        // No image-resize tool (sharp/ImageMagick) is available in this
+        // environment to generate proper 16x16 / 32x32 / 180x180 PNGs.
+        // Replace with actually-resized favicon-16x16.png, favicon-32x32.png
+        // and apple-touch-icon.png (180x180) when available.
         { rel: 'icon', href: '/images/logo.png', type: 'image/png' },
-        { rel: 'apple-touch-icon', href: '/images/logo.png' },
+        { rel: 'apple-touch-icon', href: '/images/logo.png', sizes: '180x180' },
         { rel: 'preconnect', href: 'https://cdn.jsdelivr.net', crossorigin: 'anonymous' },
         { href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css', rel: 'stylesheet' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
         { href: 'https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap&subset=cyrillic', rel: 'stylesheet' },
       ],
-      script: [
-        { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js', body: true },
-      ],
+      // Bootstrap JS bundle (Modal/Carousel/Collapse/etc.) removed — grep confirms
+      // no `data-bs-*` attributes or `bootstrap.*`/`window.bootstrap` calls anywhere
+      // in app/ or server/. Only Bootstrap's CSS grid/card/utility classes are used,
+      // and that stylesheet above is untouched.
     },
   },
 
@@ -33,11 +39,14 @@ export default defineNuxtConfig({
     bitrixEntity: process.env.BITRIX_ENTITY || 'lead',
     bitrixSourceId: process.env.BITRIX_SOURCE_ID || 'WEB',
     bitrixAssignedById: process.env.BITRIX_ASSIGNED_BY_ID || '',
-    allowedOrigin: process.env.ALLOWED_ORIGIN || '*',
+    // Never falls back to '*' — see server/utils/callbackSecurity.ts.
+    allowedOrigin: process.env.ALLOWED_ORIGIN || 'https://legal-service-nuxt.pages.dev',
+    turnstileSecretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://ewsir.space',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://legal-service-nuxt.pages.dev',
       siteName: 'Легал Сервис',
       dgisApiKey: process.env.NUXT_PUBLIC_2GIS_API_KEY || '',
+      turnstileSiteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
     },
   },
 
