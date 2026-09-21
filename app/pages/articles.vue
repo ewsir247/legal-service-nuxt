@@ -11,7 +11,7 @@
       <section class="section">
         <div class="feature-grid">
           <article class="feature reveal">
-            <h3 class="feature__title"><a href="#art-cadastral" class="g">Как оспорить кадастровую стоимость в 2025 году</a></h3>
+            <h3 class="feature__title"><a href="#art-cadastral" class="g">Как оспорить кадастровую стоимость</a></h3>
             <p class="feature__text">Разбор процедуры оспаривания в комиссии и суде. <a href="#art-cadastral">Читать →</a></p>
           </article>
           <article class="feature reveal">
@@ -26,19 +26,11 @@
             <h3 class="feature__title"><a href="#art-bankruptcy" class="g">Банкротство физического лица: за и против</a></h3>
             <p class="feature__text">Когда подавать на банкротство и какие последствия. <a href="#art-bankruptcy">Читать →</a></p>
           </article>
-          <article class="feature reveal">
-            <h3 class="feature__title">Раздел имущества при разводе</h3>
-            <p class="feature__text">Какое имущество совместное и как разделить квартиру в ипотеке.</p>
-          </article>
-          <article class="feature reveal">
-            <h3 class="feature__title">Оценка для нотариуса при наследстве</h3>
-            <p class="feature__text">Какие отчёты принимают нотариусы и как сэкономить на госпошлине.</p>
-          </article>
         </div>
       </section>
 
       <section class="section reveal" id="art-cadastral">
-        <h2 class="section-title">Как оспорить кадастровую стоимость в 2025 году</h2>
+        <h2 class="section-title">Как оспорить кадастровую стоимость</h2>
         <p class="section-text section-text--left">Если кадастровая стоимость выше рыночной — оспорьте через комиссию или иск в суд с отчётом независимого оценщика по ФЗ №135-ФЗ. Статус проверяйте по выписке из ЕГРН.</p>
       </section>
 

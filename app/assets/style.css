@@ -31,6 +31,7 @@
     --color-primary-dark: #190739;     /* Pantone 275 — самый тёмный */
     --color-accent: #7176B7;           /* Pantone 272 — лавандовый */
     --color-accent-soft: #9b9ed0;      /* мягкий лавандовый */
+    --color-accent-text: #5E63A8;      /* accent, затемнён для контраста ~4.6:1 на белом (WCAG AA для текста) */
 
     --color-bg: #f6f7fb;               /* фон страницы */
     --color-bg-soft: #eceefa;          /* фон секций */
@@ -376,7 +377,7 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     left: 16px; top: 50%;
     transform: translateY(-50%);
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-weight: 700;
     font-size: 1.1rem;
 }
@@ -401,7 +402,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-wrap: wrap;
 }
 .case-card__old { color: var(--color-text-muted); text-decoration: line-through; font-size: 1rem; }
-.case-card__arrow { color: var(--color-accent); font-weight: 700; }
+.case-card__arrow { color: var(--color-accent-text); font-weight: 700; }
 .case-card__new { color: var(--color-primary-dark); font-weight: 700; font-size: 1.35rem; }
 
 /* =================== Testimonial (реальный отзыв) =================== */
@@ -1060,7 +1061,7 @@ h3 + p, h3 + ul, h3 + ol, h3 + .e {
     font-weight: 700;
     line-height: 1.25;
 }
-.consult-section__title span { color: var(--color-accent); }
+.consult-section__title span { color: var(--color-accent-text); }
 .consult-section__text {
     color: var(--color-text-muted);
     font-size: 1.05rem;
@@ -1224,7 +1225,7 @@ h3 + p, h3 + ul, h3 + ol, h3 + .e {
 .map-section__2gis-link {
     display: inline-block;
     margin: 10px 0 0 10px;
-    color: var(--color-accent);
+    color: var(--color-accent-text);
     font-weight: 700;
     text-decoration: none;
 }
@@ -1642,4 +1643,37 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
   html { scroll-behavior: auto; }
   .reveal, .card[data-route] .card-img-top { transition: none !important; }
   .ls-callback-fab__pulse { animation: none !important; }
+}
+
+/* Scroll-padding so smooth in-page anchor scrolls stop below the fixed
+   header instead of tucking the target under it (matches header height
+   at each breakpoint; see .container-main padding-top above). */
+html { scroll-padding-top: 140px; }
+@media (max-width: 991px) { html { scroll-padding-top: 120px; } }
+@media (max-width: 575px) { html { scroll-padding-top: 110px; } }
+
+/* Skip-link: hidden off-screen until focused (keyboard/screen-reader users) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 3000;
+  background: #fff;
+  color: #190739;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus {
+  left: 0;
+}
+
+/* Document card images (reviews.vue): reserve space to prevent CLS
+   without hardcoding per-image width/height (dimensions vary per scan).
+   Overrides .card-img-top's fixed 200px height / 16:10 ratio, which is
+   tuned for the landscape photo cards, not portrait document scans. */
+.doc-card-img {
+  height: auto !important;
+  width: 100%;
+  aspect-ratio: 7 / 10;
+  object-fit: cover;
 }

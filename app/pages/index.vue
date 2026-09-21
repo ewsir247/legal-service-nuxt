@@ -38,14 +38,12 @@ import ConsultSection from '../components/sections/ConsultSection.vue'
 import SocialWidgetsSection from '../components/sections/SocialWidgetsSection.vue'
 import MapSection from '../components/sections/MapSection.vue'
 import { initReveal, initCounters, initHeaderScroll, initImageSkeletons } from '../composables/usePageBehaviors'
-import { useLegalSeo, deriveDescription } from '../composables/useLegalSeo'
+import { useLegalSeo } from '../composables/useLegalSeo'
 
 const rootEl = ref(null)
 
 const title = 'Легал Сервис — юридические услуги, экспертиза и оценка в Краснодаре'
-const description = deriveDescription(
-  'Выигрывайте споры с доказательствами. Экспертиза, оценка и юридическая защита в Краснодаре. 15 лет опыта, 3000+ выполненных дел. Оценка имущества, судебная экспертиза, юридические услуги, рецензирование экспертиз, оспаривание кадастровой стоимости.'
-)
+const description = 'Экспертиза, оценка и юридическая защита в Краснодаре. Оценка от 3500 ₽, услуги юриста от 5000 ₽. Бесплатная консультация по телефону.'
 useLegalSeo({ title, description, path: '/' })
 
 let cleanupFns = []

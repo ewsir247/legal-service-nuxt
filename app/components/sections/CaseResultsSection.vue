@@ -8,7 +8,7 @@
       <div class="card h-100 case-card">
         <div class="card-body">
           <div class="case-card__badge">−80,3%</div>
-          <h5 class="card-title">Земельный участок, Тихорецк</h5>
+          <h3 class="card-title">Земельный участок, Тихорецк</h3>
           <div class="case-card__row">
             <span class="case-card__old">9 613 099 ₽</span>
             <span class="case-card__arrow">→</span>
@@ -22,7 +22,7 @@
       <div class="card h-100 case-card">
         <div class="card-body">
           <div class="case-card__badge">−37,5%</div>
-          <h5 class="card-title">Арендуемый земельный участок, Анапа</h5>
+          <h3 class="card-title">Арендуемый земельный участок, Анапа</h3>
           <div class="case-card__row">
             <span class="case-card__old">762 750 491 ₽</span>
             <span class="case-card__arrow">→</span>

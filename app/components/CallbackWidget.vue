@@ -93,7 +93,12 @@
               </template>
             </div>
 
-            <p class="ls-callback-form__note">Нажимая кнопку, вы соглашаетесь с <NuxtLink to="/privacy" class="ls-alt-link" @click="closeModal">политикой обработки персональных данных</NuxtLink></p>
+            <div class="ls-callback-form__field ls-callback-form__field--consent">
+              <label :for="consentId" class="ls-callback-form__consent-label">
+                <input :id="consentId" type="checkbox" v-model="consent" required />
+                Согласен(на) с <NuxtLink to="/privacy" class="ls-alt-link" @click="closeModal">политикой обработки персональных данных</NuxtLink>
+              </label>
+            </div>
           </form>
         </template>
 
@@ -126,6 +131,7 @@ const nameId = `callback-name-${useId()}`
 const phoneId = `callback-phone-${useId()}`
 const phoneErrorId = `callback-phone-error-${useId()}`
 const commentId = `callback-comment-${useId()}`
+const consentId = `callback-consent-${useId()}`
 const titleId = `callback-modal-title-${useId()}`
 
 const scrollLock = useScrollLock()
@@ -149,6 +155,7 @@ const showModal = ref(false)
 const name = ref('')
 const phone = ref('')
 const comment = ref('')
+const consent = ref(false)
 const website = ref('')          // honeypot
 const phoneError = ref('')
 const serverError = ref('')
@@ -175,6 +182,7 @@ function openModal() {
   phoneError.value = ''
   serverError.value = ''
   showFallback.value = false
+  consent.value = false
   showModal.value = true
   idempotencyKey = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`
   scrollLock.lock()
@@ -258,6 +266,7 @@ async function submit() {
     name: name.value,
     phone: phone.value,
     comment: comment.value,
+    consent: consent.value,
     website: website.value,             // honeypot
     page: typeof window !== 'undefined' ? window.location.href : '',
     turnstileToken,

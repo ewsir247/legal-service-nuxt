@@ -1,7 +1,10 @@
 <template>
   <div>
+    <a href="#main" class="skip-link">К основному содержанию</a>
     <AppHeader />
-    <NuxtPage />
+    <div id="main" tabindex="-1">
+      <NuxtPage />
+    </div>
     <AppFooter />
     <CallbackWidget />
   </div>

@@ -16,38 +16,38 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 section-gap-sm">
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-nedvizhimosti.webp" class="card-img-top" alt="Оценка недвижимости" loading="lazy" decoding="async">
-          <div class="card-body"><h5 class="card-title">Недвижимость</h5><p class="card-text">Для ипотеки, наследства, суда или продажи <span class="zx">от 3500 ₽</span></p></div>
+          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-nedvizhimosti.webp" class="card-img-top" alt="Оценка недвижимости" loading="lazy" decoding="async" width="1664" height="928">
+          <div class="card-body"><h3 class="card-title">Недвижимость</h3><p class="card-text">Для ипотеки, наследства, суда или продажи <span class="zx">от 3500 ₽</span></p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-transporta.webp" class="card-img-top" alt="Оценка транспорта" loading="lazy" decoding="async">
-          <div class="card-body"><h5 class="card-title">Транспорт</h5><p class="card-text">Авто, спецтехника, мототранспорт <span class="zx">от 3500 ₽</span></p></div>
+          <img src="/assets/photos/uslugi-po-nezavisimoy-otsenke-transporta.webp" class="card-img-top" alt="Оценка транспорта" loading="lazy" decoding="async" width="1664" height="928">
+          <div class="card-body"><h3 class="card-title">Транспорт</h3><p class="card-text">Авто, спецтехника, мототранспорт <span class="zx">от 3500 ₽</span></p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/remont-pri-dtp.webp" class="card-img-top" alt="Ремонт при ДТП" loading="lazy" decoding="async">
-          <div class="card-body"><h5 class="card-title">Ремонт при ДТП</h5><p class="card-text">Реальная стоимость восстановления — для спора со страховой</p></div>
+          <img src="/assets/photos/remont-pri-dtp.webp" class="card-img-top" alt="Ремонт при ДТП" loading="lazy" decoding="async" width="1664" height="928">
+          <div class="card-body"><h3 class="card-title">Ремонт при ДТП</h3><p class="card-text">Реальная стоимость восстановления — для спора со страховой</p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/otsenka-biznesa.webp" class="card-img-top" alt="Оценка бизнеса" loading="lazy" decoding="async">
-          <div class="card-body"><h5 class="card-title">Бизнес</h5><p class="card-text">Стоимость предприятия, доли или пакета акций <span class="zxc">индивидуально</span></p></div>
+          <img src="/assets/photos/otsenka-biznesa.webp" class="card-img-top" alt="Оценка бизнеса" loading="lazy" decoding="async" width="1664" height="928">
+          <div class="card-body"><h3 class="card-title">Бизнес</h3><p class="card-text">Стоимость предприятия, доли или пакета акций <span class="zxc">индивидуально</span></p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/otsenka-oborudovaniya.webp" class="card-img-top" alt="Оценка оборудования" loading="lazy" decoding="async">
-          <div class="card-body"><h5 class="card-title">Оборудование</h5><p class="card-text">Для залога в банке, продажи или баланса <span class="zx">от 3500 ₽</span></p></div>
+          <img src="/assets/photos/otsenka-oborudovaniya.webp" class="card-img-top" alt="Оценка оборудования" loading="lazy" decoding="async" width="1664" height="928">
+          <div class="card-body"><h3 class="card-title">Оборудование</h3><p class="card-text">Для залога в банке, продажи или баланса <span class="zx">от 3500 ₽</span></p></div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100">
-          <img src="/assets/photos/otsenka-ushcherba.jpeg" class="card-img-top" alt="Оценка ущерба" loading="lazy" decoding="async">
-          <div class="card-body"><h5 class="card-title">Ущерб</h5><p class="card-text">Ущерб, упущенная выгода, право требования <span class="zxc">индивидуально</span></p></div>
+          <img src="/assets/photos/otsenka-ushcherba.webp" class="card-img-top" alt="Оценка ущерба" loading="lazy" decoding="async" width="1664" height="928">
+          <div class="card-body"><h3 class="card-title">Ущерб</h3><p class="card-text">Ущерб, упущенная выгода, право требования <span class="zxc">индивидуально</span></p></div>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
           <div class="card h-100 case-card">
             <div class="card-body">
               <div class="case-card__badge">−56,6%</div>
-              <h5 class="card-title">Земельный участок, Краснодар</h5>
+              <h3 class="card-title">Земельный участок, Краснодар</h3>
               <div class="case-card__row"><span class="case-card__old">12 711 077 ₽</span><span class="case-card__arrow">→</span><span class="case-card__new">5 512 000 ₽</span></div>
             </div>
           </div>
@@ -80,7 +80,7 @@
           <div class="card h-100 case-card">
             <div class="card-body">
               <div class="case-card__badge">−71,2%</div>
-              <h5 class="card-title">Коммерческий объект, Краснодар</h5>
+              <h3 class="card-title">Коммерческий объект, Краснодар</h3>
               <div class="case-card__row"><span class="case-card__old">21 173 978 ₽</span><span class="case-card__arrow">→</span><span class="case-card__new">6 082 500 ₽</span></div>
             </div>
           </div>

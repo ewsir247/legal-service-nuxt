@@ -16,7 +16,7 @@
             <div class="card h-100 team-card">
               <div class="team-card__avatar">{{ s.avatar }}</div>
               <div class="card-body">
-                <h5 class="card-title">{{ s.name }}</h5>
+                <h3 class="card-title">{{ s.name }}</h3>
                 <p class="team-card__role">{{ s.role }}</p>
                 <p class="team-card__creds"><a :href="'#' + s.id">Смотреть дипломы ↓</a></p>
               </div>
@@ -32,8 +32,8 @@
           <div class="col" v-for="l in letters" :key="l.img">
             <a :href="'/assets/documents/' + l.img" target="_blank" rel="noopener" class="g">
               <div class="card">
-                <img :src="'/assets/documents/' + l.img" class="card-img-top" :alt="l.title" loading="lazy" decoding="async">
-                <div class="card-body"><h5 class="card-title">{{ l.title }}</h5></div>
+                <img :src="'/assets/documents/' + l.img" class="card-img-top doc-card-img" :alt="l.title" loading="lazy" decoding="async">
+                <div class="card-body"><h3 class="card-title">{{ l.title }}</h3></div>
               </div>
             </a>
           </div>
@@ -47,8 +47,22 @@
           <div class="col" v-for="r in vkReviews" :key="r.img">
             <a :href="'/assets/documents/' + r.img" target="_blank" rel="noopener" class="g">
               <div class="card">
-                <img :src="'/assets/documents/' + r.img" class="card-img-top" :alt="r.title" loading="lazy" decoding="async">
-                <div class="card-body"><h5 class="card-title">{{ r.title }}</h5></div>
+                <img :src="'/assets/documents/' + r.img" class="card-img-top doc-card-img" :alt="r.title" loading="lazy" decoding="async">
+                <div class="card-body"><h3 class="card-title">{{ r.title }}</h3></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2 class="section-title">Документы компании</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 section-gap">
+          <div class="col" v-for="c in companyDocs" :key="c.img">
+            <a :href="'/assets/documents/' + c.img" target="_blank" rel="noopener" class="g">
+              <div class="card">
+                <img :src="'/assets/documents/' + c.img" class="card-img-top doc-card-img" :alt="c.title" loading="lazy" decoding="async">
+                <div class="card-body"><h3 class="card-title">{{ c.title }}</h3></div>
               </div>
             </a>
           </div>
@@ -65,8 +79,8 @@
             <div class="col" v-for="d in s.diplomas" :key="d.img">
               <a :href="'/assets/documents/' + d.img" target="_blank" rel="noopener" class="g">
                 <div class="card">
-                  <img :src="'/assets/documents/' + d.img" class="card-img-top" :alt="d.title" loading="lazy" decoding="async">
-                  <div class="card-body"><h5 class="card-title">{{ d.title }}</h5></div>
+                  <img :src="'/assets/documents/' + d.img" class="card-img-top doc-card-img" :alt="d.title" loading="lazy" decoding="async">
+                  <div class="card-body"><h3 class="card-title">{{ d.title }}</h3></div>
                 </div>
               </a>
             </div>
@@ -125,6 +139,10 @@ const letters = [
   { img: 'letter-04.jpg', title: 'Благодарственное письмо' },
   { img: 'letter-05.jpg', title: 'Благодарственное письмо' },
   { img: 'letter-06.jpg', title: 'Благодарственное письмо' },
+]
+
+const companyDocs = [
+  { img: 'sertifikat-goszakupki.jpg', title: 'Сертификат соответствия для участия в госзакупках' },
 ]
 
 const vkReviews = [
@@ -192,18 +210,18 @@ const specialists = [
 ]
 
 const courts = [
-  { name: 'Арбитражный суд Краснодарского края', url: 'http://krasnodar.arbitr.ru' },
-  { name: 'Лабинский районный суд', url: 'http://labinsk.krd.sudrf.ru' },
-  { name: 'Ленинградский районный суд', url: 'http://leningradskay.krd.sudrf.ru' },
-  { name: 'Ленинский районный суд г. Краснодара', url: 'http://krasnodar-leninsky.krd.sudrf.ru' },
-  { name: 'Первомайский районный суд г. Краснодара', url: 'http://pervomaisky.krd.sudrf.ru' },
-  { name: 'Прикубанский районный суд г. Краснодара', url: 'http://krasnodar-prikubansky.krd.sudrf.ru' },
-  { name: 'Приморско-Ахтарский районный суд', url: 'http://primorsko-axtarsky.krd.sudrf.ru' },
-  { name: 'Советский районный суд г. Краснодара', url: 'http://krasnodar-sovetsky.krd.sudrf.ru' },
-  { name: 'Северский районный суд', url: 'http://seversky.krd.sudrf.ru' },
-  { name: 'Славянский районный суд', url: 'http://slavynsky.krd.sudrf.ru' },
-  { name: 'Тахтамукайский районный суд Республики Адыгея', url: 'http://tahtamukaysky.adg.sudrf.ru' },
-  { name: 'Теучежский районный суд Республики Адыгея', url: 'http://teuchezhsky.adg.sudrf.ru' },
+  { name: 'Арбитражный суд Краснодарского края', url: 'https://krasnodar.arbitr.ru' },
+  { name: 'Лабинский районный суд', url: 'https://labinsk.krd.sudrf.ru' },
+  { name: 'Ленинградский районный суд', url: 'https://leningradskay.krd.sudrf.ru' },
+  { name: 'Ленинский районный суд г. Краснодара', url: 'https://krasnodar-leninsky.krd.sudrf.ru' },
+  { name: 'Первомайский районный суд г. Краснодара', url: 'https://pervomaisky.krd.sudrf.ru' },
+  { name: 'Прикубанский районный суд г. Краснодара', url: 'https://krasnodar-prikubansky.krd.sudrf.ru' },
+  { name: 'Приморско-Ахтарский районный суд', url: 'https://primorsko-axtarsky.krd.sudrf.ru' },
+  { name: 'Советский районный суд г. Краснодара', url: 'https://krasnodar-sovetsky.krd.sudrf.ru' },
+  { name: 'Северский районный суд', url: 'https://seversky.krd.sudrf.ru' },
+  { name: 'Славянский районный суд', url: 'https://slavynsky.krd.sudrf.ru' },
+  { name: 'Тахтамукайский районный суд Республики Адыгея', url: 'https://tahtamukaysky.adg.sudrf.ru' },
+  { name: 'Теучежский районный суд Республики Адыгея', url: 'https://teuchezhsky.adg.sudrf.ru' },
 ]
 
 let cleanupFns = []

@@ -44,7 +44,7 @@ import { useLegalSeo, deriveDescription } from '../composables/useLegalSeo'
 const rootEl = ref(null)
 
 useLegalSeo({
-  title: 'О компании Легал Сервис — Легал Сервис, Краснодар',
+  title: 'О компании — Легал Сервис, Краснодар',
   description: deriveDescription('Легал Сервис — одна из лидирующих оценочно-экспертных компаний в Краснодарском крае. Оказываем услуги оценки, экспертизы и юриспруденции с 2010 года.'),
   path: '/about',
   breadcrumbs: [

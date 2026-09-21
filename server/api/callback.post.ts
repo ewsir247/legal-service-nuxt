@@ -90,7 +90,8 @@ export default defineEventHandler(async (event) => {
   if (!parsed.success) {
     setResponseStatus(event, 422)
     const phoneIssue = parsed.error.issues.find((i) => i.path[0] === 'phone')
-    return { ok: false, error: phoneIssue?.message || 'Проверьте правильность заполнения формы.' }
+    const consentIssue = parsed.error.issues.find((i) => i.path[0] === 'consent')
+    return { ok: false, error: phoneIssue?.message || consentIssue?.message || 'Проверьте правильность заполнения формы.' }
   }
   const data = parsed.data
 
@@ -142,10 +143,12 @@ export default defineEventHandler(async (event) => {
   const endpoint = `${base}${method}.json`
 
   // Build a readable comment block
+  const requestTime = new Date().toISOString()
   const commentLines: string[] = []
   if (comment) commentLines.push(`Комментарий: ${comment}`)
   if (page) commentLines.push(`Страница: ${page}`)
-  commentLines.push(`Получено: ${new Date().toISOString()}`)
+  commentLines.push(`Согласие на обработку ПДн: да, ${requestTime}`)
+  commentLines.push(`Получено: ${requestTime}`)
   const commentsText = commentLines.join('\n')
 
   const fields: Record<string, unknown> = {

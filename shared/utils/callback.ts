@@ -29,6 +29,7 @@ export const callbackSchema = z.object({
   name: z.string().max(100).optional().default(''),
   phone: z.string().min(1, 'Укажите корректный номер телефона.').max(40),
   comment: z.string().max(500).optional().default(''),
+  consent: z.boolean().optional().default(false),
   page: z.string().max(300).optional().default(''),
   website: z.string().optional().default(''), // honeypot
   turnstileToken: z.string().optional().default(''),
@@ -36,6 +37,9 @@ export const callbackSchema = z.object({
 }).superRefine((data, ctx) => {
   if (!isValidPhone(data.phone)) {
     ctx.addIssue({ code: 'custom', path: ['phone'], message: 'Укажите корректный номер телефона.' })
+  }
+  if (data.consent !== true) {
+    ctx.addIssue({ code: 'custom', path: ['consent'], message: 'Необходимо согласие на обработку персональных данных.' })
   }
   if (data.page) {
     try {
